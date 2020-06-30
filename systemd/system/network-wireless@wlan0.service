@@ -1,0 +1,50 @@
+##  Arch Linux template for wireless network service
+##  
+##  This file should be saved as /etc/systemd/system/network-wireless@<wlan0>.service,
+##    where <wlan0> is the name of your wireless adapter (found by the command "ip link")
+##  
+##  You MUST comment out one of the etwo blocks: DHCP or Static IP address, and adapt
+##    the wpa_supplicant line if needed.
+##  
+##  When using a static IP address, this file assumes the file
+##    /etc/conf.d/network-wireless-%i exists.
+##  
+##  AstroFloyd, 2017-09-22
+##  http://arch.astrofloyd.org/
+
+
+#  Wireless service with DHCP or static IP address (comment out the irrelevant block)
+
+[Unit]
+Description=Wireless network connectivity (%i)
+Wants=network.target
+Before=network.target
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Set the link up and start wpa_supplicant:
+ExecStart=/usr/bin/ip link set dev %i up
+ExecStart=/usr/bin/wpa_supplicant -B -D nl80211,wext -i %i -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+# DHCP - comment out either THIS or the NEXT BLOCK:
+ExecStart=/usr/bin/echo "Attempting to start wireless connection %i with DHCP."
+ExecStart=/usr/bin/dhcpcd %i
+
+# Static IP address - comment out either THIS or the PREVIOUS BLOCK:
+# A static IP address needs /etc/conf.d/network-wireless-%i
+#EnvironmentFile=/etc/conf.d/network-wireless-%i
+#ExecStart=/usr/bin/echo "Attempting to start wireless connection %i with static IP address ${address}, netmask ${netmask}, broadcast ${broadcast} and default gateway ${gateway}."
+#ExecStart=/usr/bin/ip addr add ${address}/${netmask} broadcast ${broadcast} dev %i
+#ExecStart=/usr/bin/ip route add default via ${gateway}
+
+
+# Stop commands:
+ExecStop=/usr/bin/ip addr flush dev %i
+ExecStop=/usr/bin/ip link set dev %i down
+
+[Install]
+WantedBy=multi-user.target
