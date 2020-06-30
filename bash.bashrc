@@ -36,7 +36,7 @@ export LESS_TERMCAP_us=$'/E[01;31m'  # Underline - variables -> bold red
 export LESS_TERMCAP_ue=$'/E[0m'      # End underline
 export GROFF_NO_SGR=1
 alias less='less -Si'
-
+export VISUAL-"emacs"
 
 
 
