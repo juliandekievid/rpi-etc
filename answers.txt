@@ -1,0 +1,24 @@
+Answers Final Assignment OPS - Julian de Kievid - 591095
+
+answer 3.1 a) 		 het base system gebruikt 1.7G van 30G (7%)
+answer 3.1 b) 		 Hetzelfde overzicht maar dan is de Size kolom vervangen door 1K-blocks die de geheugengroote weergeven
+answer 3.2    		 60 Mi
+answer 4.1    		 Met het command pacman -Q (dit command laat een lijst zien met alle geinstalleerde packages)
+answer 4.2    		 pacman heeft geinstalleerd: git 2.27.0-1
+answer 4.3    		 Tue Jun 30 13:56:26 2020 commit and push
+answer 5.1    		 Package haveged-1.9.13-1 is geupdate
+answer 6.1  		 De terminal geeft de error "Unable to read PKGBUILD"
+answer 7.1		 Wanneer proberen in te loggen: "Permission denied, please try again." Na 3 keer proberen: Permission denied (publickey,password).""
+answer 7.2		 Ja (omdat ik de aliases al aan bashrc toegevoegd heb)
+answer 7.3		 Ja
+answer 8.1    		 User opsstudent heeft de kleur rood waarbij "JuliansPI" blauw is. Bij user root hebben de letters de kleur geel en heeft de tekst "root" een rode achtergrond en de tekst "JuliansPi" een blauwe achtergrond.
+answer 8.2-8.4 		 Er word geen kleur weergegeven maar de tekst "MOVING"  wordt weergegeven als /E[01;34mMOVING/E[0m
+answer 9.1
+answer 9.2		Packages: bash, python3, python-sense-hat, python-netifaces, python, python-pillow, python-setuptools, python-numpy, python-rtimulib,i2c-tools, 1m_sensors
+answer 9.3		at start: han-ese-ops_run-at-boot en at boot: han-ese-ops_run-at-shutdown
+answer 9.4 	   	at shutdown: "Shutting down JuliansPi" en at boot: "Booting JuliansPi (Linux) eth0: 192.168.178.52 wlan0: 192.168.178.54
+answer 9.5	 	Bij inloggen in user opsstudent laat de sensehat de volgende tekst zien: "User opsstudent logged in"
+              		Bij inloggen in su laat de sensehat de volgende tekst zien: "User opsstudent logged in"
+answer 10.2  		2020-06-30 20:04:04 0.0 0.0 0.0 (zowel pressure als temperature en humidity heb ik hardcoded op 0 gezet omdat er anders errors gegenereerd werden
+answer 10.3  		Als je 1 '>' gebruikt wordt de gehele inhoud van de log file herschreven met de tekst uit jouw command
+		
